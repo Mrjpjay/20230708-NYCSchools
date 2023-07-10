@@ -15,6 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tickets.R
 import com.example.tickets.api.SchoolDetailData
@@ -56,17 +59,16 @@ fun SchoolDetails(empty: Boolean, schoolDetail: SchoolDetailData) {
 
 @Composable
 fun TextDetails(schoolDetail: SchoolDetailData) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
+
+    Column {
         Text(
-            text = "School Name: ${schoolDetail.schoolName}" +
-                    "\nSat Test Takers: ${schoolDetail.numOfSatTestTakers}" +
-                    "\nMath AVG Score: ${schoolDetail.satMathAvgScore}" +
-                    "\nWriting AVG Score: ${schoolDetail.satWritingAvgScore}" +
-                    "\nCritical Reading AVG Score: ${schoolDetail.satCriticalReadingAvgScore}"
+            text = "${schoolDetail.schoolName}",
+            fontWeight = FontWeight.Bold
         )
+        Text(text = "SAT Writing Avg Score: ${schoolDetail.satWritingAvgScore}" +
+                "\nSat math Avg Score: ${schoolDetail.satMathAvgScore}" +
+                "\nSat Critical Reading Avg Score: ${schoolDetail.satCriticalReadingAvgScore}" +
+                "\n Num of Sat Test Takers${schoolDetail.numOfSatTestTakers}")
     }
 }
 
@@ -82,4 +84,14 @@ fun NoSchool() {
         )
         Text(text = "No School Found")
     }
+}
+@Composable
+@Preview
+fun Prev(){
+    SchoolDetails(
+        empty = false,
+        schoolDetail = SchoolDetailData(
+            schoolName = "Maryville University"
+        )
+    )
 }
