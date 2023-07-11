@@ -28,7 +28,7 @@ class SchoolsViewModel @Inject constructor(
     init {
         getSchools()
     }
-    private fun getSchools(){
+    fun getSchools(){
         _loading.value = true
         viewModelScope.launch {
             repository.getSchools(object : SchoolsRepoImpl.SchoolsListener{

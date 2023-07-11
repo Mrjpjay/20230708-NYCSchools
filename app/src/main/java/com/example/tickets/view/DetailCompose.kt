@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tickets.R
 import com.example.tickets.api.SchoolDetailData
@@ -65,7 +67,8 @@ fun TextDetails(schoolDetail: SchoolDetailData) {
             text = "${schoolDetail.schoolName}",
             fontWeight = FontWeight.Bold
         )
-        Text(text = "SAT Writing Avg Score: ${schoolDetail.satWritingAvgScore}" +
+        Text( modifier = Modifier.padding(top = 8.dp),
+            text = "SAT Writing Avg Score: ${schoolDetail.satWritingAvgScore}" +
                 "\nSat math Avg Score: ${schoolDetail.satMathAvgScore}" +
                 "\nSat Critical Reading Avg Score: ${schoolDetail.satCriticalReadingAvgScore}" +
                 "\n Num of Sat Test Takers${schoolDetail.numOfSatTestTakers}")
@@ -82,7 +85,7 @@ fun NoSchool() {
             painter = painterResource(id = R.drawable.baseline_school_24),
             contentDescription = ""
         )
-        Text(text = "No School Found")
+        Text(text = "No SAT Found")
     }
 }
 @Composable
